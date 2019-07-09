@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+		</style>
+	</head>
+
+	<body>
+		<h1>Objet</h1>
+		<script>
+			var tableau = ["valeur1", "valeur2"];
+			console.log(tableau[0]);
+
+			var objetLitteral = {	
+				'prenom': "test",
+				'age': 20,
+				'faireQqch': function () { }
+			};
+			objetLitteral.faireQqch();
+
+			function Crayon(paramNom, couleur) {
+				// propriétés
+				this.nom = paramNom;
+				this.couleur = couleur;
+				this.longueur;
+				this.niveauEncre = 100;
+				this.prenoms = ['toto', 'tata', 'pouet'];
+
+				// méthodes
+				this.ecrire = function(niveauEncre) {
+					if (typeof niveauEncre === 'undefined') {
+						niveauEncre = 1;
+					}
+
+					document.write("Le crayon " + this.nom + " a écrit ");
+
+					this.niveauEncre = this.niveauEncre - niveauEncre;
+				};
+			}
+
+			// instancier (crée une instance, un objet en particulier) un objet
+			var crayon = new Crayon("toto", "noir");
+			var crayon2 = new Crayon("titine", "bleu");
+			
+			console.log(crayon2);
+
+			crayon2.ecrire(50);
+			console.log(crayon2);
+			crayon2.ecrire();
+			console.log(crayon2);
+			crayon.ecrire();
+
+			/* représenter ces données en langage procédural (!= POO) 
+			prend beaucoup de lignes et est plus lourd dans la compréhension des vraialbes 
+			var crayonNom  = "norbert";
+			var crayonCouleur = "Noir";
+			var crayonLongueur = "10cm";
+			var crayonNiveauEncre = 100;
+			var crayonEcrire = function() {
+				document.write("Le crayon " + crayonNom + " vient d'écrire ");
+			};
+
+			var crayonNom2  = "bibi";
+			var crayonCouleur2 = "Blanc";
+			var crayonLongueur2 = "8cm";
+			var crayonNiveauEncre2 = 90;
+			var crayonEcrire2 = function() {
+				document.write("Le crayon " + crayonNom2 + " vient d'écrire ");
+			};
+			*/
+
+			crayon.nom = "toto2";
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+			h1 {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>TP 1 - Exo 2</h1>
+
+		<input type="text" id="input1"/>
+		<input type="text" id="input2"/>
+		<button id="btn">Valider</button>
+		<p id="p1"></p>
+
+		<script>
+			// récupérer le button en javascript
+			var btnCalcul = document.querySelector("#btn");
+			// écouter le click sur ce button
+			btnCalcul.addEventListener("click", function() {
+				// quand on a cliqué sur ce button, réaliser la multiplication
+				// donc récupérer les deux champs en js
+				var nombre1 = document.querySelector("#input1");
+				var nombre2 = document.querySelector("#input2");
+
+				// récupérer les valeurs dans ces champs
+				var nombre1Value = nombre1.value;
+				var nombre2Value = nombre2.value;
+
+
+				// afficher le résultat dans le paragraphe
+				var paragrapheResultat = document.querySelector("#p1");
+
+				if (isNaN(nombre1Value) || isNaN(nombre2Value)) {
+					// ici au moins un des deux champs n'est pas un number
+					paragrapheResultat.innerHTML = "Veuillez saisir deux nombres."
+				}
+				else {
+					// ok les deux champs contiennt des valeurs numériques
+
+					// et faire la multiplication avec les valeurs de ces champs
+					var resultat = nombre1Value * nombre2Value;
+
+					paragrapheResultat.innerHTML = resultat;
+				}
+			});
+		</script>
+	</body>
+</html>

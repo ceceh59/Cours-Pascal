@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+		
+		</style>
+	</head>
+
+	<body>
+		<div id="div_principal"></div>
+		<button>Ajouter</button>
+
+		Exercice 3:
+
+		- Créer en html un élément div principal, puis un bouton avec le texte "ajouter" en dessous
+
+		- En javascript, codez le script qui permet de détecter le clic sur le bouton. Lors du clic sur ce bouton, il faut ajouter un élément div enfant dans le div principal. Codez uniquement en javascript cette partie. Chaque div enfant :
+
+		- doit faire 75px de largeur par 75 px de hauteur
+
+		- avoir comme texte le numéro de sa position enfant dans le div principal (exemple: si c'est le 2ème élément div enfant, le texte "2" doit se trouver à l'intérieur.
+
+		- avoir une couleur de bordure aléatoire
+
+		- avoir sa couleur de fond qui devient vert quand la souris le survole, puis qui redevient transparent quand la souris le quitte
+
+		Question finale : chaque div doit être supprimé quand on clique dessus, mais il faut garder la cohérence : chaque div enfant doit contenir comme texte le numéro correspondant à sa position dans le div principal, et donc il faut remettre à jour les textes lors d'une suppression.
+
+
+		<script
+		  src="http://code.jquery.com/jquery-3.3.1.min.js"
+		  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		  crossorigin="anonymous"></script>
+
+		<script>
+			function getRandomColor() {
+				var letters = '0123456789ABCDEF';
+				var color = '#';
+				for (var i = 0; i < 6; i++) {
+					color += letters[Math.floor(Math.random() * 16)];
+				}
+				return color;
+			}
+
+			$("button").on('click', function() {
+				// créer le div et appliquer le style
+				var divEnfant = $("<div>");
+				divEnfant.css('width', "75px");
+				divEnfant.css('height', '75px');
+				divEnfant.css('display', 'inline-block');
+				divEnfant.css('border', '1px solid ' + getRandomColor());
+
+				// écouter les évenements
+				divEnfant.on('mouseover', function() {
+					$(this).css('background-color', 'green');
+				});
+
+				divEnfant.on('mouseout', function() {
+					$(this).css('background-color', 'transparent');
+				});
+
+				$("#div_principal").append(divEnfant);
+
+				// obtenir le nombre d'enfant div dans div_principal
+				var nbDiv = $("#div_principal").children("div").length;
+				// ou encore :
+				// var nbDiv = $("#div_principal > div").length
+
+				// insérer le chiffre dans l'élément
+				divEnfant.text(nbDiv);
+
+				// supprimer l'élément au clic
+				divEnfant.on('click', function() {
+					$(this).remove();
+
+					// remettre à jour le compteur en modifiant le contenu
+					// de chaque div enfant restant
+					// la boucle each permet d'avoir la variable index représentant le numéro de l'itération (sans oublier qu'elle commence à 0)
+					$("#div_principal > div").each(function(index, element) {
+						$(this).text(index + 1);
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

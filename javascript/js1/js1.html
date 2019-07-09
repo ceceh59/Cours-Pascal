@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+			/* priorité au sélecteur par !important > ID > classe > tag */
+			div#contenu {
+				color: red;
+			}
+
+			div {
+				color: green !important;			
+			}
+
+			p {
+				color:purple;
+			}
+		</style>
+	</head>
+
+	<body>
+		<p style="color:green">Un paragraphe</p>
+
+		<script>
+			// envoyer un message dans la console javascript
+			console.log("Hello !");
+
+			// 1- Les VARIABLES
+			// déclaration de la variable
+			var chaine; 
+			
+			// initialisation de la variable : mettre pour la première fois une valeur
+			chaine = "Hello 2 !"; 
+			console.log(chaine);
+
+			// changer la valeur d'une variable : l'ancienne valeur est perdue
+			chaine = "Hello 3 !";
+			console.log(chaine);
+
+			// types de variables primitifs
+			var chaine = "chaine"; // chaine de caractères
+			var chaine2 = 'l\'île'; // échapper le ' pour l'utiliser comme caractères dans la chaine
+			var chaine3 = "13"; // chaine même si la valeur est assimilable à un nombre
+
+			var entier = -50;
+			var entier2 = 123;
+
+			var boolean = true;
+			var boolean2 = false;
+
+			// opérations sur ces types de variable
+			// concaténation
+			var chaineBonjour = "Bonjour";
+			var chainePrenom = "Fabian";
+			var chaineTotale = chaineBonjour + " " + chainePrenom;
+			console.log(chaineTotale);
+
+			// opérations arithmétiques
+			var addition = 3 + 5;
+			var soustraction = 3 - 5;
+			var multiplication = 4 * 6;
+			var division = 10 / 3;
+
+			console.log(4 * 6);
+			console.log(addition + soustraction);
+			console.log(4 + soustraction * 5); // calcule 4 + -2 * 5
+
+			var addition2 = "5" + 4 + 6;
+			console.log(addition2); // affiche 546 et non 15
+
+			var concatenation = "5" + (4 + 6);
+			console.log(concatenation);
+			// grâce aux parenthèses, l'addition est réalisée d'abord
+			// puis la concaténation est utilisée car "5" est une chaine
+			// affiche donc : 510
+
+			// typage dynamique : le type d'une variable peut changer
+			var chaine = "test";
+			chaine = 50;
+			chaine = false;
+
+			//  l'inverse du typage statique, où un type doit être prévu pour une varible et ne peut changer
+
+			// en js, le type number existe pour les entiers et les décimales
+			var number = 50.5;
+			var number2 = 10 / 3;
+			console.log(number2);
+
+			// connaitre le type d'une variable
+			console.log(typeof number2);
+
+			// une constante ne change jamais de valeur tout au long du script, elle peut $etre de n'importe quel type
+			const TVA = 20 / 100;
+			// TVA = 23; // impossible de modifier le 20
+
+			console.log("5" + 3); // affiche 53
+			// forcer une addition avec une chaine
+			console.log(Number("5") + 3); // affiche 8
+			// car Number a transformé le type de la chaine "5"
+
+			chaine = "55";
+			number = Number(chaine);
+
+			// dans le cas inverse
+			console.log(String(2) + 1);
+
+			// raccourci opérateur
+			var chiffre = 5;
+			chiffre = chiffre + 3;
+			chiffre += 3; // ajoute 3 à la variable elle-même
+			chiffre -= 2; // retire 2 à la variable elle-même
+			chiffre /= 8; // divise par 8 la variable elle-même
+			chiffre *= 6; // multiplie par 6 la variable elle-même
+			console.log(chiffre);
+
+			var salut = "salut";
+			salut += " !"; // concatène "salut" avec " !"
+			console.log(salut);
+
+			// incrémentation / décrémentation
+			var i = 0;
+			i = i + 1;
+			i++; // augmente i de 1
+			i--; // diminue i de 1
+
+			// intéractions avec l'utilisateur
+			// afficher une info
+			var intermediaire = "Bonjour tout le monde" + ( 10 + i);
+			alert(intermediaire);
+
+			// demander une info :
+			var codePostal = prompt("Saisissez votre code postal :");
+			// la variable codePostal contient ce que l'utilisateur a saisi
+			console.log(codePostal);
+
+			/** Exercice 1
+			- Demander à l'utilisateur son année de naissance
+			- Calculer son âge
+			- Pour finir pour lui dire "Vous avez x ans"
+ 			**/
+ 			let annee = prompt("Veuillez saisir votre année de naissance :");
+ 			var age = 2019 - annee;
+ 			var texte = "Vous avez " + age + " ans";
+			alert(texte);
+
+			/* en une ligne, c'est possible (mais un peu moins lisible) :
+			alert("Vous avez " + (2019 -prompt("Veuillez saisir votre année de naissance :")) + " ans");
+			*/
+		</script>
+	</body>
+</html>

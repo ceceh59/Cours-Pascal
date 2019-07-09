@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style>
+			h1 {
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h1>TP 1</h1>
+		
+		<script>
+			// Exercice 1
+			function nbRandom(min, max) {
+				max++;
+				var nombreAleatoire = Math.random() * (max - min) + min;
+				var entierAleatoire = Math.floor(nombreAleatoire);
+
+				return entierAleatoire;
+			}
+
+			// générer un nombre aléatoire entre 1 et 15 correspondant aux nombres de notes à générer
+			var nbNotes = nbRandom(1, 15);
+
+			// préaprer un tableau dans lequel on va mettre toutes les notes
+			var notes = [];
+			// faire une boucle pour générer ce nombre de notes
+			for (i=0;i < nbNotes;i++) {
+				// générer une note entre 0 et 20
+				var note = nbRandom(0, 20);
+				// insérer cette note dans le tableau de notes
+				notes.push(note);
+				//notes[i] = nbRandom(); // alternative à la ligne au-dessus
+			}
+			console.log(notes);
+
+			var somme = 0;
+			// faire une boucle pour calculer la somme de toutes les notes
+			for (i=0;i<nbNotes;i++) {
+				somme = somme + notes[i];
+				// somme += notes[i]; // alternative à la ligne au-dessus
+			}
+
+			// calcule d'une moyenne = somme des notes divisé par nombre de notes
+			var moyenne = somme / nbNotes;
+
+			// arrondir à l'entier le plus proche
+			moyenne = Math.round(moyenne);
+
+			/* 
+			// arrondir à 2 chiffres après la virgule
+			moyenne = Math.round(moyenne * 100) / 100;
+			// ou
+			moyenne = moyenne.toFixed(2);
+			// arrondir à 3, 4, 5, 6, etc. chiffres après la virgule
+			moyenne = moyenne.toFixed(4);
+			*/
+
+			for (i=0;i<nbNotes;i++) {
+				var textNode = document.createTextNode(notes[i]);
+				document.body.appendChild(textNode);
+				var brNode = document.createElement("br");
+				document.body.appendChild(brNode);
+
+				/* ou par exemple ça :
+				var pNode = document.createElement("p");
+				pNode.innerHTML = notes[i];
+				document.body.appendChild(pNode);
+
+				// ou encore plein d'autres possibilités en fonction du contexte 
+				*/
+			}
+
+			// afficher la moyenne :
+			var textMoyenne = "Moyenne = " + moyenne;
+			var pNode = document.createElement("p");
+			pNode.innerHTML = textMoyenne;
+			document.body.appendChild(pNode);
+
+			// ou deuxième solution, tout dans une seule boucle
+			// générer un nb aléatoire
+			var nbNotes = nbRandom(1, 15);
+			// ou tout dans une même boucle 
+			var somme = 0;
+			// faire une boucle pour générer ce nombre de notes
+			for (i=0;i < nbNotes;i++) {
+				var note = nbRandom(0, 20);
+
+				somme = somme + note;
+
+				var textNode = document.createTextNode(note);
+				document.body.appendChild(textNode);
+				var brNode = document.createElement("br");
+				document.body.appendChild(brNode);
+			}
+
+			var moyenne = somme / nbNotes;
+			moyenne = Math.round(moyenne);
+
+			var textMoyenne = "Moyenne = " + moyenne;
+			var pNode = document.createElement("p");
+			pNode.innerHTML = textMoyenne;
+			document.body.appendChild(pNode);
+		</script>
+	</body>
+</html>

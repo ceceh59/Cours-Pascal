@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style></style>
+	</head>
+
+	<body>
+		<p style="color:green">Les structures conditionnelles</p>
+		<p style="color:green">Les structures itératives</p>
+
+		<script>
+			var age = 15;
+			// exécuter des instructions uniquement si une condition est vraie
+			if (age >= 18) {
+				console.log("Vous êtes majeur");
+			}
+
+			// exécuter des instructions si une condition est vraie,
+			// sinon exécuter d'autres instructions
+			if (age >= 18) {
+				console.log("Vous êtes majeur");
+			}
+			else {
+				console.log("Vous êtes mineur");
+			}
+
+			console.log("Fin du programme");
+
+			i = 0;
+			if (i == 1) {
+
+			} 
+			/*
+				== : égal à (le simple "=" est l'opérateur d'affectation de valeur)
+				> : supérieur à
+				< : inférieur à
+				>= : supérieur ou égal à 
+				<= : inférieur ou égal à 
+				!= : différent de
+			*/
+
+			var chiffre = 18;
+			var chiffre2 = "18";
+
+			if (chiffre == chiffre2) {
+				// ici ?
+				// oui le double égal ne vérifie pas le type mais uniquement la valeur
+				console.log("La chaine 18 est égale au nombre 18");
+			}
+
+			// comparaison stricte : valeur ET type
+			if (chiffre === chiffre2) {
+				console.log("La chaine 18 n'est pas strictement égale au nombre 18, donc on ne rentre pas dans cette condition");
+			}
+
+			/* opérateur de comparaison stricte
+			=== : strictement égal à (valeur et type)
+			!== : strictement différent de (la valeur peut être la même, si le type est différent, la condition est vraie)
+			*/
+
+			// conditions imbriquées :
+			age = 2;
+			if (age >= 18) {
+				console.log("Vous êtes majeur");
+			}
+			else {
+				if (age > 3) {
+					console.log("Vous êtes mineur");
+				}
+				else {
+					console.log("Vous êtes bébé");
+				}	
+			}
+
+			// équivalent else if
+			if (age >= 18) {
+				console.log("Vous êtes majeur");
+			}
+			else if (age >= 3) {
+				console.log("Vous êtes mineur");
+			}
+			else {
+				console.log("Vous êtes bébé");
+			}
+
+			/*
+				Opérateur logique
+				|| : OU
+				&& : ET
+			*/
+			/* Conditions multiples */
+			var age = 25;
+			if (age >= 18 && age <=25) {
+				console.log("Ok pour la carte 18-25");
+			}
+			else {
+				console.log("Pas l'âge pour cette carte");
+			}
+
+			/*
+			réduction pour les 18-25, les 45-50, et les 68
+			*/
+			if (age >= 18 && age <=25
+				|| age >= 45 && age <=50
+				|| age == 68) {
+				console.log("Réduction accordée");
+			}
+
+			// pour les mêmes expressions, les parenthèses changent les priorités, et donc le sens des conditions
+			if (age >= 18
+				&& (age <=25 || age >= 45)
+				&& age <= 50
+				|| age == 68) {
+				console.log("Les conditions sont erronées");
+			}
+
+			// structure selon
+			var age = prompt("Votre âge pour la réduc ?");
+			switch (Number(age)) {
+				case 18:
+					console.log("Réduc 18");
+					break;
+				case 25:
+					console.log("Réduc 25");
+					break;
+				case 65:
+					console.log("Réduc 65");
+					break;
+				case 51:
+				case 52:
+					console.log("Réduc 51 et 52");
+					break;
+				default:
+					console.log("Aucune réduc");
+			}
+
+			// structures itératives
+
+			// beaucoup utilisé avec les boucles : le type tableau (array)
+			// tableau numérique : accès aux éléments grâce à un indice numérique
+			var tableau = [];
+
+			// ajouter des éléments dans le tableau
+			tableau.push(1);
+			tableau.push(15);
+			tableau.push("bonjour");
+
+			// accéder aux éléments dans le tableau
+			console.log(tableau[0]);
+			console.log(tableau[1]);
+			console.log(tableau[2]);
+
+			// indice non existant : la valeur renvoyée est undefined
+			console.log(tableau[3]);
+
+			// modifier un élément dans un tableau
+			tableau[0] = 11;
+			console.log(tableau);
+
+			// boucle FOR (boucle pour)
+			// qui permet de répéter une instruction
+			// un certain nombre de fois
+
+			// pour remplacer par exemple ceci :
+			/*
+			alert(tableau[0]);
+			alert(tableau[1]);
+			alert(tableau[2]);
+			*/
+
+			// on peut faire ceci :
+			var i;
+			for (i=0;i<=2;i++) {
+				alert(tableau[i]);
+				console.log(tableau[i]);
+			}
+			
+
+			// attention aux boucles infinies :
+			// ici la condition est toujours vraie,
+			// donc on ne sortira jamais de la boucle
+			/*
+			for (i=0;i>=0;i++) {
+				alert(tableau[i]);
+				console.log(tableau[i]);
+			}
+			*/
+
+			// rendre la condition dynamique sans savoir le nombre d'éléments dans le tableau
+			tableau.push("bonjour 2");
+			var i;
+			for (i=0;i<=tableau.length-1;i++) {
+				alert(tableau[i]);
+				console.log(tableau[i]);
+			}
+
+			// on utilise FOR quand on connait le nombre d'itération à l'avance (dynamique ou non)
+
+			// boucle while (tant que)
+			// tirage au sort : demander à l'utilisateur un chiffre entre 1 et 20, (la bonne réponse est 6)
+			// et lui redemander un chiffre tant qu'il ne saisit pas un chiffre entre 1 et 20 (s'il se trompe par exemple)
+
+			var nombre = prompt("Veuillez saisir un nombre entre 1 et 20 :");
+			while (nombre < 1 || nombre > 20) {
+				alert('Mauvais nombre');
+				nombre = prompt("Veuillez saisir un nombre entre 1 et 20 :");
+			}
+
+			if (nombre == 6) {
+				alert("gagné");
+			} 
+			else {
+				alert("perdu");
+			}
+
+			// récap while : on utilise la boucle while quand on ne connait pas à l'avance le nombre d'itérations
+		</script>
+	</body>
+</html>
